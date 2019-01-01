@@ -64,6 +64,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
                 }
             }
         });
+
         holder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

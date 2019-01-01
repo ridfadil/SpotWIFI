@@ -1,6 +1,10 @@
 package id.wifispotri.com.wifispot.adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import id.wifispotri.com.wifispot.R;
+import id.wifispotri.com.wifispot.activity.DashboardActivity;
 import id.wifispotri.com.wifispot.database.DBHelper;
 import id.wifispotri.com.wifispot.model.Spot;
 
@@ -69,6 +74,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
             }
         });
         holder.favorite.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
                 if (hitFav % 2 == 0) {
@@ -90,6 +96,13 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
                         if (dbHelper.MasukanData(apiId, spotName, jumlahSpot, locationSpot, longitideSpot, latitudeSpot)) {
                             Toast.makeText(context, "Data di Masukan ke daftar Favorite", Toast.LENGTH_SHORT).show();
                             notifyDataSetChanged();
+
+                            Intent i = new Intent(context, DashboardActivity.class);
+                            i.setFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+
+                            ActivityOptions options =
+                                    ActivityOptions.makeCustomAnimation(context, R.anim.fade_in, R.anim.fade_out);
+                            context.startActivity(i, options.toBundle());
                         } else {
                             Toast.makeText(context, "Gagal Di Masukan ke daftar Favorite", Toast.LENGTH_SHORT).show();
                         }
@@ -101,6 +114,12 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
                         dbHelper.DeleteData(id);
                         Toast.makeText(context, "dihilangkan dari Favorite", Toast.LENGTH_SHORT).show();
                         notifyDataSetChanged();
+
+                        Intent i = new Intent(context, DashboardActivity.class);
+                        i.setFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+                        ActivityOptions options =
+                                ActivityOptions.makeCustomAnimation(context, R.anim.fade_in, R.anim.fade_out);
+                        context.startActivity(i, options.toBundle());
                     }
                 }
             }

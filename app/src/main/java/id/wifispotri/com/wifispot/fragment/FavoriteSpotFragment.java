@@ -47,5 +47,4 @@ public class FavoriteSpotFragment extends Fragment {
 
         return spotView;
     }
-
 }

@@ -33,14 +33,17 @@
         <android.support.design.widget.TabItem
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:icon="@drawable/ic_wifi_icon"
             android:text="Spot WIFI" />
 
         <android.support.design.widget.TabItem
             android:layout_width="match_parent"
+            android:icon="@drawable/ic_favorites"
             android:layout_height="match_parent"
-            android:text="Favorite Spot" />
+            android:text="Favorite" />
 
         <android.support.design.widget.TabItem
+            android:icon="@drawable/ic_information"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="About" />
