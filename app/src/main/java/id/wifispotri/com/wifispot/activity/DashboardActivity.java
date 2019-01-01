@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import id.wifispotri.com.wifispot.R;
 import id.wifispotri.com.wifispot.adapter.DashboardAdapter;
+import id.wifispotri.com.wifispot.database.DBHelper;
 
 public class DashboardActivity extends AppCompatActivity {
+
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
         final ViewPager viewPager = findViewById(R.id.pager);
+        dbHelper = new DBHelper(this);
 
         PagerAdapter pagerAdapter = new DashboardAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 

@@ -67,11 +67,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public boolean MasukanData(String idApi, String nama, String lokasi, String longitude, String latitude) {
+    public boolean MasukanData(String idApi, String nama, String jumlahSpot, String lokasi, String longitude, String latitude) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues konten = new ContentValues();
         konten.put(ID_API, idApi);
         konten.put(NAMA_SPOT, nama);
+        konten.put(JUMLAH_SPOT, jumlahSpot);
         konten.put(LOKASI_SPOT, lokasi);
         konten.put(LATITUDE, latitude);
         konten.put(LONGITUDE, longitude);
@@ -86,17 +87,51 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean EditData(String idDb, String idApi, String nama, String lokasi, String longitude, String latitude) {
+    public boolean cekData(String idApi) {
+        boolean data = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues konten = new ContentValues();
+        String qr = "select * from " + TABLE_NAME + " where " + ID_API + " = " + idApi;
+        Cursor cursor = db.rawQuery(qr, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Spot spot = new Spot(
+                        (cursor).getString((cursor).getColumnIndex(ID_DB))
+                );
+                data = true;
+            } while (cursor.moveToNext());
+        }
+        return data;
+    }
+
+    public String getIdDb(String idApi) {
+        String id = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues konten = new ContentValues();
+        String qr = "select * from " + TABLE_NAME + " where " + ID_API + " = " + idApi;
+        Cursor cursor = db.rawQuery(qr, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Spot spot = new Spot(
+                        id = (cursor).getString((cursor).getColumnIndex(ID_DB))
+                );
+            } while (cursor.moveToNext());
+        }
+        return id;
+    }
+
+    public boolean EditData(String idDb, String idApi, String nama, String jumlahSpot, String lokasi, String longitude, String latitude) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues konten = new ContentValues();
         konten.put(ID_DB, idDb);
         konten.put(ID_API, idApi);
         konten.put(NAMA_SPOT, nama);
+        konten.put(JUMLAH_SPOT, jumlahSpot);
         konten.put(LOKASI_SPOT, lokasi);
         konten.put(LATITUDE, latitude);
         konten.put(LONGITUDE, longitude);
 
-        int hasil = db.update(TABLE_NAME, konten, "ID =? ", new String[]{idDb});
+        int hasil = db.update(TABLE_NAME, konten, "id_db = ? ", new String[]{idDb});
         if (hasil > 0) {
             return true;
         } else {
@@ -104,9 +139,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Integer DeleteData(String idDb) {
+    public boolean DeleteData(String idDb) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int i = db.delete(TABLE_NAME, "ID=? ", new String[]{idDb});
-        return i;
+        int i = db.delete(TABLE_NAME, "id_db = ? ", new String[]{idDb});
+        if (i > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

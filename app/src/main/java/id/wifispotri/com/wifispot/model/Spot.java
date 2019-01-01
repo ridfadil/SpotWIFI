@@ -7,6 +7,19 @@ public class Spot {
     public Spot() {
     }
 
+    public Spot(String idDb) {
+        this.idDb = idDb;
+    }
+
+    public Spot(String idApi, String namaSpot, String jumlahSpot, String lokasiSpot, String longitude, String latitude) {
+        this.idApi = idApi;
+        this.namaSpot = namaSpot;
+        this.jumlahSpot = jumlahSpot;
+        this.lokasiSpot = lokasiSpot;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public Spot(String namaSpot, String jumlahSpot, String lokasiSpot) {
         this.namaSpot = namaSpot;
         this.jumlahSpot = jumlahSpot;

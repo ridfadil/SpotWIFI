@@ -1,7 +1,6 @@
 package id.wifispotri.com.wifispot.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +16,14 @@ import id.wifispotri.com.wifispot.R;
 import id.wifispotri.com.wifispot.database.DBHelper;
 import id.wifispotri.com.wifispot.model.Spot;
 
-public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSpotViewHolder> {
     private List<Spot> listSpot;
     private Context context;
     private DBHelper dbHelper;
-    int hit = 1, hitFav = 0, fav;
+    int hit = 1;
     String dbId = "", apiId = "", spotName = "", jumlahSpot = "", locationSpot = "", longitideSpot = "", latitudeSpot = "";
 
-    public SpotAdapter(Context context, List<Spot> listSpot, DBHelper dbHelper) {
+    public FavoriteAdapter(Context context, List<Spot> listSpot, DBHelper dbHelper) {
         this.context = context;
         this.listSpot = listSpot;
         this.dbHelper = dbHelper;
@@ -44,16 +43,13 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
     public void onBindViewHolder(final ListSpotViewHolder holder, final int position) {
         final String status;
         final Spot mCurrent = listSpot.get(position);
-        if (dbHelper.cekData(mCurrent.getIdApi())) {
-            holder.favorite.setImageResource(R.drawable.like);
-        } else {
-            holder.favorite.setImageResource(R.drawable.likewhite);
-        }
+
         holder.namaWifi.setText(mCurrent.getNamaSpot());
         holder.lokasiWifi.setText(mCurrent.getLokasiSpot());
         holder.jumlahWifi.setText(mCurrent.getJumlahSpot());
         holder.layoutExpand.setVisibility(View.GONE);
         holder.imgExpand.setImageResource(R.drawable.up);
+        holder.favorite.setImageResource(R.drawable.like);
         holder.expander.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,38 +67,10 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
         holder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (hitFav % 2 == 0) {
-                    holder.favorite.setImageResource(R.drawable.likewhite);
-                    fav = 0;
-                    hitFav++;
-                } else {
-                    holder.favorite.setImageResource(R.drawable.like);
-                    fav = 1;
-                    hitFav++;
-                }
-
-                if (fav == 1) {
-                    if (dbHelper.cekData(mCurrent.getIdApi())) {
-                        Toast.makeText(context, "Data sudah ada di favorite", Toast.LENGTH_SHORT).show();
-                        holder.favorite.setImageResource(R.drawable.like);
-                    } else {
-                        getData(position, holder);
-                        if (dbHelper.MasukanData(apiId, spotName, jumlahSpot, locationSpot, longitideSpot, latitudeSpot)) {
-                            Toast.makeText(context, "Data di Masukan ke daftar Favorite", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();
-                        } else {
-                            Toast.makeText(context, "Gagal Di Masukan ke daftar Favorite", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                if (fav == 0) {
-                    String id = dbHelper.getIdDb(mCurrent.getIdApi());
-                    if (!id.equals("")) {
-                        dbHelper.DeleteData(id);
-                        Toast.makeText(context, "dihilangkan dari Favorite", Toast.LENGTH_SHORT).show();
-                        notifyDataSetChanged();
-                    }
-                }
+                dbHelper.DeleteData(mCurrent.getIdDb());
+                Toast.makeText(context, "dihilangkan dari Favorite", Toast.LENGTH_SHORT).show();
+                listSpot.remove(position);
+                notifyDataSetChanged();
             }
         });
     }
@@ -111,11 +79,10 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
         final Spot mCurrent = listSpot.get(position);
         dbId = mCurrent.getIdDb();
         apiId = mCurrent.getIdApi();
-        spotName = mCurrent.getNamaSpot();
         jumlahSpot = mCurrent.getJumlahSpot();
-        locationSpot = mCurrent.getLokasiSpot();
+        spotName = holder.namaWifi.getText().toString();
+        locationSpot = holder.lokasiWifi.getText().toString();
         latitudeSpot = mCurrent.getLatitude();
-
         longitideSpot = mCurrent.getLongitude();
     }
 
@@ -125,7 +92,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
     }
 
     public class ListSpotViewHolder extends RecyclerView.ViewHolder {
-        final SpotAdapter mAdapter;
+        final FavoriteAdapter mAdapter;
         private TextView namaWifi;
         private TextView lokasiWifi;
         private TextView jumlahWifi;
@@ -134,7 +101,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
         private LinearLayout layoutExpand;
         private LinearLayout expander;
 
-        public ListSpotViewHolder(View itemView, SpotAdapter adapter) {
+        public ListSpotViewHolder(View itemView, FavoriteAdapter adapter) {
             super(itemView);
             context = itemView.getContext();
             imgExpand = itemView.findViewById(R.id.img_expand);
@@ -148,3 +115,4 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
         }
     }
 }
+
