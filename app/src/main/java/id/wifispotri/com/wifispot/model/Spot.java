@@ -1,31 +1,42 @@
 package id.wifispotri.com.wifispot.model;
 
 public class Spot {
-    private String id, namaSpot, jumlahSpot, lokasSpot, longitude, latitude;
+    private String idDb, idApi, namaSpot, jumlahSpot, lokasiSpot, longitude, latitude;
     private int gambar;
 
-    public Spot(String namaSpot, String jumlahSpot, String lokasSpot) {
-        this.namaSpot = namaSpot;
-        this.jumlahSpot = jumlahSpot;
-        this.lokasSpot = lokasSpot;
+    public Spot() {
     }
 
-    public Spot(String id, String namaSpot, String jumlahSpot, String lokasSpot, String longitude, String latitude, int gambar) {
-        this.id = id;
+    public Spot(String namaSpot, String jumlahSpot, String lokasiSpot) {
         this.namaSpot = namaSpot;
         this.jumlahSpot = jumlahSpot;
-        this.lokasSpot = lokasSpot;
+        this.lokasiSpot = lokasiSpot;
+    }
+
+    public Spot(String idDb, String idApi, String namaSpot, String jumlahSpot, String lokasiSpot, String longitude, String latitude) {
+        this.idDb = idDb;
+        this.idApi = idApi;
+        this.namaSpot = namaSpot;
+        this.jumlahSpot = jumlahSpot;
+        this.lokasiSpot = lokasiSpot;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.gambar = gambar;
     }
 
-    public String getId() {
-        return id;
+    public String getIdDb() {
+        return idDb;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdDb(String idDb) {
+        this.idDb = idDb;
+    }
+
+    public String getIdApi() {
+        return idApi;
+    }
+
+    public void setIdApi(String idApi) {
+        this.idApi = idApi;
     }
 
     public String getNamaSpot() {
@@ -44,12 +55,12 @@ public class Spot {
         this.jumlahSpot = jumlahSpot;
     }
 
-    public String getLokasSpot() {
-        return lokasSpot;
+    public String getLokasiSpot() {
+        return lokasiSpot;
     }
 
-    public void setLokasSpot(String lokasSpot) {
-        this.lokasSpot = lokasSpot;
+    public void setLokasiSpot(String lokasiSpot) {
+        this.lokasiSpot = lokasiSpot;
     }
 
     public String getLongitude() {

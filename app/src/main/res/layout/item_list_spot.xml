@@ -23,8 +23,8 @@
 
                 <ImageView
                     android:id="@+id/user_foto"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_gravity="center"
                     android:layout_margin="4dp"
                     android:src="@drawable/wifistrip" />
@@ -32,15 +32,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/et_nama_wifi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
+                        android:layout_marginBottom="4dp"
                         android:text="Nama WIFI"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -48,29 +50,54 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jumlah Wifi : "
-                            android:textSize="20sp" />
+                            android:id="@+id/et_jumlah_wifi"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circle"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="30sp" />
 
                         <TextView
-                            android:id="@+id/et_jumlah_wifi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5"
-                            android:textSize="40sp" />
+                            android:text="  SPOT "
+                            android:textSize="17sp"
+                            android:textStyle="italic" />
+
                     </LinearLayout>
-
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/expander"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/colorPrimary"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/img_expand"
+                    android:layout_width="20sp"
+                    android:layout_height="20sp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/up" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_expand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="4dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/wificorner" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -89,9 +116,11 @@
 
                     <ImageView
                         android:id="@+id/favorite"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/unlike" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/likewhite" />
 
                 </LinearLayout>
 
