@@ -51,13 +51,6 @@ public class DashboardActivity extends AppCompatActivity {
         final ViewPager viewPager = findViewById(R.id.pager);
         dbHelper = new DBHelper(this);
 
-        /*listSpot.add(new Spot("1", "Tsel WIFI", "3", "Ujung Berung", "23456789", "098765432"));
-        listSpot.add(new Spot("2", "Hexagon WIFI", "1", "Cicadas", "23456789", "098765432"));
-        listSpot.add(new Spot("3", "Lunax WIFI", "2", "Maranatha", "23456789", "098765432"));
-        listSpot.add(new Spot("4", "Oxygen WIFI", "4", "Cibiru", "23456789", "098765432"));
-        listSpot.add(new Spot("5", "Speedy WIFI", "6", "Buah Batu", "23456789", "098765432"));
-        listSpot.add(new Spot("6", "YouthFi WIFI", "5", "Cicalengka", "23456789", "098765432"));*/
-
         PagerAdapter pagerAdapter = new DashboardAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), listSpot);
 
         viewPager.setAdapter(pagerAdapter);

@@ -31,7 +31,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
 
     @Override
     public ListSpotViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_spot, null, false);
+        View mItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_favorite, null, false);
 
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mItemView.setLayoutParams(layoutParams);
@@ -101,6 +101,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
         private ImageView favorite;
         private LinearLayout layoutExpand;
         private LinearLayout expander;
+        private LinearLayout layoutFavorite;
 
         public ListSpotViewHolder(View itemView, FavoriteAdapter adapter) {
             super(itemView);
@@ -112,6 +113,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
             namaWifi = itemView.findViewById(R.id.et_nama_wifi);
             jumlahWifi = itemView.findViewById(R.id.et_jumlah_wifi);
             lokasiWifi = itemView.findViewById(R.id.et_lokasi);
+            layoutFavorite = itemView.findViewById(R.id.layout_data);
             this.mAdapter = adapter;
         }
     }
