@@ -3,12 +3,14 @@ package id.wifispotri.com.wifispot.adapter;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,6 +61,30 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ListSpotVi
         holder.jumlahWifi.setText(mCurrent.getJumlahSpot());
         holder.layoutExpand.setVisibility(View.GONE);
         holder.imgExpand.setImageResource(R.drawable.up);
+
+        holder.btnLokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("geo:" + mCurrent.getLatitude() + "," + mCurrent.getLongitude());
+                //Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/@?api=1&map_action=map&center=" + mCurrent.getLatitude() + "," + mCurrent.getLongitude() + "&zoom=15&basemap=satellite&layer=transit");
+                //Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/@?api=1&map_action=pano&pano=tu510ie_z4ptBZYo2BGEJg&viewpoint=" + mCurrent.getLatitude() + "," + mCurrent.getLongitude() + "&heading=-45&pitch=38&fov=80");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                context.startActivity(mapIntent);
+
+            }
+        });
+
+        holder.btnLokasiView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/@?api=1&map_action=pano&pano=tu510ie_z4ptBZYo2BGEJg&viewpoint=" + mCurrent.getLatitude() + "," + mCurrent.getLongitude() + "&heading=-45&pitch=38&fov=80");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                context.startActivity(mapIntent);
+            }
+        });
+
         holder.expander.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,6 +172,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ListSpotVi
         private ImageView favorite;
         private LinearLayout layoutExpand;
         private LinearLayout expander;
+        private Button btnLokasi;
+        private Button btnLokasiView;
 
         public ListSpotViewHolder(View itemView, SearchAdapter adapter) {
             super(itemView);
@@ -157,6 +185,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ListSpotVi
             namaWifi = itemView.findViewById(R.id.et_nama_wifi);
             jumlahWifi = itemView.findViewById(R.id.et_jumlah_wifi);
             lokasiWifi = itemView.findViewById(R.id.et_lokasi);
+            btnLokasi = itemView.findViewById(R.id.btn_lokasi);
+            btnLokasiView = itemView.findViewById(R.id.btn_lokasi_view);
             this.mAdapter = adapter;
         }
     }
