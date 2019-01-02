@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Cari Spot WIFI Favorit mu"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_Spot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:inputType="text"
+            android:textColorHint="@color/colorWhite"
+            android:hint="Masukkan Spot WIFI" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

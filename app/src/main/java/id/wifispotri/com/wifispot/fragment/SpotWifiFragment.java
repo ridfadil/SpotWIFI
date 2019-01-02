@@ -1,6 +1,7 @@
 package id.wifispotri.com.wifispot.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,30 +32,29 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class SpotWifiFragment extends Fragment {
     View spotView;
     DBHelper dbHelper;
     @BindView(R.id.rv_list_spot)
     RecyclerView rvListSpot;
+    List<Spot> searchSpot = new ArrayList<>();
 
     private List<Spot> listSpot = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private SpotAdapter mAdapter;
     String dbId = "", apiId = "", spotName = "", jumlahSpot = "", locationSpot = "", longitideSpot = "", latitudeSpot = "";
 
+    @SuppressLint("ValidFragment")
+    public SpotWifiFragment(List<Spot> searchSpot) {
+        this.searchSpot = searchSpot;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         spotView = inflater.inflate(R.layout.fragment_spot_wifi, container, false);
         dbHelper = new DBHelper(getContext());
-
-        /*listSpot.add(new Spot("1", "Tsel WIFI", "3", "Ujung Berung", "23456789", "098765432"));
-        listSpot.add(new Spot("2", "Hexagon WIFI", "1", "Cicadas", "23456789", "098765432"));
-        listSpot.add(new Spot("3", "Lunax WIFI", "2", "Maranatha", "23456789", "098765432"));
-        listSpot.add(new Spot("4", "Oxygen WIFI", "4", "Cibiru", "23456789", "098765432"));
-        listSpot.add(new Spot("5", "Speedy WIFI", "6", "Buah Batu", "23456789", "098765432"));
-        listSpot.add(new Spot("6", "YouthFi WIFI", "5", "Cicalengka", "23456789", "098765432"));*/
 
         Call<ResponseData> call = UtilsApi.getAPIService().getSpotWifi();
         call.enqueue(new Callback<ResponseData>() {
