@@ -6,9 +6,21 @@
     tools:context=".fragment.AboutFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/wifi"
+        android:id="@+id/gambarwifi"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi ini ialah aplikasi untuk mencari\nspot WIFI yang ada di daerah Bandung"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:textColor="@color/colorWhite"/>
 
 </FrameLayout>
