@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="335dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="My Favorite Spot"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/et_lokasi"
+                    android:layout_width="335dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="Lokasi Wifi"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/favorite"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="4dp"
+                    android:padding="2dp"
+                    android:src="@drawable/likeblack" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/wificorner" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/user_foto"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/wifistrip"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/et_nama_wifi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="1"
+                        android:text="Nama WIFI"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/et_jumlah_wifi"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/circle"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  SPOT "
+                            android:textSize="17sp"
+                            android:textStyle="italic" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expander"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/colorPrimary"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/img_expand"
+                    android:layout_width="20sp"
+                    android:layout_height="20sp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/up" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_lokasi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_1"
+                        android:text="Open Location" />
+
+                    <Button
+                        android:id="@+id/btn_lokasi_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_1"
+                        android:text="View Location" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/layout_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/refreshh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Data Favorite Kosong"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+</LinearLayout>
