@@ -130,7 +130,7 @@
                     android:layout_width="20sp"
                     android:layout_height="20sp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/up" />
+                    android:src="@drawable/down" />
             </LinearLayout>
 
             <LinearLayout

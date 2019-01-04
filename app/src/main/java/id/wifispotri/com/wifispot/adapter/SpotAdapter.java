@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +59,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
         holder.lokasiWifi.setText(mCurrent.getLokasiSpot());
         holder.jumlahWifi.setText(mCurrent.getJumlahSpot());
         holder.layoutExpand.setVisibility(View.GONE);
-        holder.imgExpand.setImageResource(R.drawable.up);
+        holder.imgExpand.setImageResource(R.drawable.down);
         holder.btnLokasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,11 +88,11 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ListSpotViewHo
             public void onClick(View view) {
                 if (hit % 2 == 0) {
                     holder.layoutExpand.setVisibility(View.GONE);
-                    holder.imgExpand.setImageResource(R.drawable.up);
+                    holder.imgExpand.setImageResource(R.drawable.down);
                     hit++;
                 } else {
                     holder.layoutExpand.setVisibility(View.VISIBLE);
-                    holder.imgExpand.setImageResource(R.drawable.down);
+                    holder.imgExpand.setImageResource(R.drawable.up);
                     hit++;
                 }
             }

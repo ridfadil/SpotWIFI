@@ -51,7 +51,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
         holder.lokasiWifi.setText(mCurrent.getLokasiSpot());
         holder.jumlahWifi.setText(mCurrent.getJumlahSpot());
         holder.layoutExpand.setVisibility(View.GONE);
-        holder.imgExpand.setImageResource(R.drawable.up);
+        holder.imgExpand.setImageResource(R.drawable.down);
         holder.favorite.setImageResource(R.drawable.like);
         holder.btnLokasi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,11 +81,11 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ListSp
             public void onClick(View view) {
                 if (hit % 2 == 0) {
                     holder.layoutExpand.setVisibility(View.GONE);
-                    holder.imgExpand.setImageResource(R.drawable.up);
+                    holder.imgExpand.setImageResource(R.drawable.down);
                     hit++;
                 } else {
                     holder.layoutExpand.setVisibility(View.VISIBLE);
-                    holder.imgExpand.setImageResource(R.drawable.down);
+                    holder.imgExpand.setImageResource(R.drawable.up);
                     hit++;
                 }
             }

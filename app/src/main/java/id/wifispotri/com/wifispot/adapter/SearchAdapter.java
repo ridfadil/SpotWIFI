@@ -1,6 +1,5 @@
 package id.wifispotri.com.wifispot.adapter;
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,7 +19,6 @@ import java.util.List;
 
 import id.wifispotri.com.wifispot.R;
 import id.wifispotri.com.wifispot.activity.DashboardActivity;
-import id.wifispotri.com.wifispot.activity.SearchSpotctivity;
 import id.wifispotri.com.wifispot.database.DBHelper;
 import id.wifispotri.com.wifispot.model.Spot;
 
@@ -60,7 +58,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ListSpotVi
         holder.lokasiWifi.setText(mCurrent.getLokasiSpot());
         holder.jumlahWifi.setText(mCurrent.getJumlahSpot());
         holder.layoutExpand.setVisibility(View.GONE);
-        holder.imgExpand.setImageResource(R.drawable.up);
+        holder.imgExpand.setImageResource(R.drawable.down);
 
         holder.btnLokasi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,11 +88,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ListSpotVi
             public void onClick(View view) {
                 if (hit % 2 == 0) {
                     holder.layoutExpand.setVisibility(View.GONE);
-                    holder.imgExpand.setImageResource(R.drawable.up);
+                    holder.imgExpand.setImageResource(R.drawable.down);
                     hit++;
                 } else {
                     holder.layoutExpand.setVisibility(View.VISIBLE);
-                    holder.imgExpand.setImageResource(R.drawable.down);
+                    holder.imgExpand.setImageResource(R.drawable.up);
                     hit++;
                 }
             }
